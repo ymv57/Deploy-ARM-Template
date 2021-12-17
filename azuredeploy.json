@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "VnetName": {
-            "type": "string",
+                "type": "string",
             "defaultValue": "VNet-001",
             "metadata": {
                 "description": "Virtual Network Name"
