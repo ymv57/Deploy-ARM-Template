@@ -4,26 +4,22 @@ on:
   push:
     branches:
       - master
-env:
-  AZURE_SUBSCRIPTION_ID: 84104084-7f59-4c71-b8b9-8c4de9166f75   # set this to your Azure Subscription Id
-  AZURE_RESOURCE_GROUP: GitHubActionExercise-rg   # set this to your target resource group
 
 jobs:
-  deploy-virtual-network-template:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout source code
+      - name: Checkout Code
         uses: actions/checkout@master
 
       - name: Login to Azure
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: Deploy ARM Template
+    
+      - name: Deploy ARM Template0
         uses: azure/arm-deploy@v1
         with:
-          scope: resourcegroup
-          subscriptionId: ${{ env.AZURE_SUBSCRIPTION_ID }}
-          resourceGroupName: ${{ env.AZURE_RESOURCE_GROUP }}
+          subscriptionId: 84104084-7f59-4c71-b8b9-8c4de9166f75
+          resourceGroupName: GitHubActionExercise-rg
           template: ./azuredeploy.json
